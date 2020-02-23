@@ -2,5 +2,31 @@ Project Notes:
 
 
 Useful links:
--Trello - https://trello.com/b/ShHkEj9J/programarionline
--GitHub - https://github.com/ArteneR/ProgramariOnline.git
+- Trello - https://trello.com/b/ShHkEj9J/programarionline
+- GitHub - https://github.com/ArteneR/ProgramariOnline.git
+
+
+-------------------------------------------------------------
+
+
+ToDos:
+
+- Widget (Desktop + Mobile)
+- Website (D + M)
+- Admin Panel (D + M)
+- AWS Infrastructure Setup (infrastructure as code)
+- Domain registration
+- Users management
+- Appointments management
+- Notifications/Emails management
+- Dockerizing the application
+- CI/CD setup (Jenkins)
+
+
+
+
+
+
+
+
+
