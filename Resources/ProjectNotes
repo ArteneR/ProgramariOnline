@@ -21,6 +21,216 @@ ToDos:
 - Notifications/Emails management
 - Dockerizing the application
 - CI/CD setup (Jenkins)
+- Emails template/text
+
+
+
+Possible Domain Names:
+
+- programari-online.com
+- programarionline.com
+
+
+
+
+Pages:
+
+- Home 			- Search companies, short description of ProgramariOnline - Learn More button -> About Us page
+- Companies 	- Company page, where users can make appointments
+			  	  eg. http://programari-online.com/companies?c=pasapoarte
+- About Us 		- Presentation of ProgramariOnline platform - images, howtos, guides, FAQs
+- My Profile 	- User may see all his appointments (list of companies, select company -> see appointment)
+				- User may edit his account, delete account
+- Go to Admin	- If User has at least 1 company, show the Go to Admin button -> takes the user to the admin panel
+				  eg. http://programari-online.com/admin
+- Contact		- Form to get in touch, Phone number, email address, facebook page, etc.
+- Terms & Conds - Only in footer
+- Privacy Pol 	- Only in footer
+
+
+
+
+
+Company management:
+
+- company name
+- company alias (used in the URL) - offer preview of how it looks
+- primary color (used also in the widget, in the header)
+- secondary color
+- website
+- email
+- phone
+- location
+- google maps coords
+- working hours
+- Clients may refer companies
+- Add your company - Must be logged in
+				   - Initially, create company is not active
+				   - Must Subscribe ($3.00 / month) - company becomes activated
+- appointments time interval - 15 mins, 30 mins, etc. (how long does an appointment lasts, on average)
+- set working hours & days - 08:00 -> 17:00 Monday - Friday
+						   - custom option
+- manage appointments
+- admin can disable certain dates/timeslots
+- automatically confirm new appointments - If set to 'No', you will receive a notification for every appointment a 											  user is making and you need to approve/decline it - then user will get 											updated on this action
+										 - If set to 'Yes', new appointments made by users are automatically confirmed
+
+
+
+
+
+Users management:
+
+- An account is mandatory: - Create for free
+						   - Login with Facebook
+						   - Login with Google
+- Required: - Firstname
+			- Lastname
+			- Email
+			- Phone (may be optional)
+- CRUD on users
+- Admin can suspend/forbid users to make appointments on the company
+
+
+
+
+
+Admin panel:
+
+- url example: http://programari-online.com/admin
+
+Pages:
+- Home / Dashboard 		- Welcome to programari-online blah, blah, short guide
+- Users 				- First, select for which company you want to see the users (dropdown)
+						- List of users
+						- Suspend/Enable users to your company (control if they can make apponintments or not)
+						- See user contact info - get in touch with him
+- Companies 			- Add/View Company
+						- Set company details
+						- Added company is deactivated until the subscription is paid
+- Appointments 			- First, select for which company you want to see the users (dropdown)
+						- Calendar / Timeline view (like in the main app)
+						- See all appointments (from all your users)
+						- Accept/Reject appointments
+						- Set a certain day/timeslot as off (unavailable) - users won't be able to make an appointment in that timeframe
+
+
+
+
+
+-------------------------------------------------------------
+
+Database organization:
+
+
+Users:
+======
+
+id
+firstname
+lastname
+email
+phone
+facebook_id
+google_id
+created_at
+updated_at
+
+
+
+
+Companies:
+==========
+
+id
+name
+alias
+company_details: - primary_color
+				 - secondary_color
+				 - website
+				 - email
+				 - phone
+				 - location
+				 - google maps coords
+				 - working days
+				 - working hours
+status (active/inactive)
+created_at
+updated_at
+
+
+
+
+Users_Companies:
+================
+
+id
+user_id
+company_id
+created_at
+updated_at
+
+
+
+
+Appointments:
+=============
+
+id
+user_id
+company_id
+appointment_date
+appointment_time
+created_at
+updated_at
+
+
+
+
+Emails_Sent:
+============
+
+id
+user_from_id
+user_to_id
+company_id
+email_type (eg. appointment created - need confirmation, appointment canceled)
+
+
+
+
+
+-------------------------------------------------------------
+
+
+appointment: ["09:15", "09:30"]
+
+settings: 15 mins 	(appointments time interval)
+
+timeslots (generated): 
+{
+	2019: {
+		Jan: {
+			1: [["09:00", "09:15"], ["09:15", "09:30"], ...],
+			2: ...
+			3: ...
+		}, 
+		Feb: {
+			...
+		}
+	},
+	2020: {
+		...
+	}
+}
+ 
+
+
+if (appointment[0] >= timeslot[0] && appointment[0] < timeslot[0]) {
+	MATCH
+}
+
+
 
 
 
